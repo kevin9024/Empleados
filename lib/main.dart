@@ -10,7 +10,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Material App',
-      home: MyHomePage("Mis Contactos"), 
+      home: MyHomePage("Personas Guardadas"), 
     );
   }
 }
+

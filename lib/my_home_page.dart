@@ -1,7 +1,9 @@
-import 'package:crud_en_flutter/message_response.dart';
-import 'package:crud_en_flutter/modify_contact.dart';
-import 'package:crud_en_flutter/register_contact.dart';
+import 'package:proyecto_final/message_response.dart';
+import 'package:proyecto_final/modificar_persona.dart';
+import 'package:proyecto_final/register_persona.dart';
 import 'package:flutter/material.dart';
+
+import 'message_response.dart';
 
 class MyHomePage extends StatefulWidget {
   final String _title;
@@ -12,10 +14,10 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePage extends State<MyHomePage> {
   List<Client> clients = [
-    Client(name: 'Will', surname: 'Mora', phone: '302 454 25 93'),
-    Client(name: 'Sam', surname: 'Perez', phone: '322 412 34 68'),
-    Client(name: 'Marlon', surname: 'Gutierrez', phone: '301 441 36 98'),
-    Client(name: 'Jhon', surname: 'Segura', phone: '310 789 90 62')
+    Client(name: 'Will', surname: 'Mora', fechaIngreso: ''),
+    Client(name: 'Sam', surname: 'Perez', fechaIngreso: ''),
+    Client(name: 'Marlon', surname: 'Gutierrez', fechaIngreso: ''),
+    Client(name: 'Jhon', surname: 'Segura', fechaIngreso: ''),
   ];
 
   @override
@@ -41,7 +43,7 @@ class _MyHomePage extends State<MyHomePage> {
                     clients.insert(index, newContact);
 
                     messageResponse(
-                        context, newContact.name + " a sido modificado...!");
+                        context, newContact.name + " a sido modificado o visualizado...!");
                   });
                 }
               });
@@ -50,12 +52,12 @@ class _MyHomePage extends State<MyHomePage> {
               removeClient(context, clients[index]);
             },
             title: Text(clients[index].name + " " + clients[index].surname),
-            subtitle: Text(clients[index].phone),
+            subtitle: Text("Fecha Ingreso: " + clients[index].fechaIngreso),
             leading: CircleAvatar(
               child: Text(clients[index].name.substring(0, 1)),
             ),
             trailing: Icon(
-              Icons.call,
+              Icons.account_box_rounded,
               color: Colors.red,
             ),
           );
@@ -85,7 +87,7 @@ class _MyHomePage extends State<MyHomePage> {
     showDialog(
         context: context,
         builder: (_) => AlertDialog(
-              title: Text("Eliminar Cliente"),
+              title: Text("Eliminar Persona"),
               content: Text("Esta seguro de eliminar a " + client.name + "?"),
               actions: [
                 TextButton(
@@ -117,7 +119,10 @@ class _MyHomePage extends State<MyHomePage> {
 class Client {
   var name;
   var surname;
-  var phone;
+  var fechaIngreso;
+  var fechaNacimiento;
+  var salario;
+  var direccion;
 
-  Client({this.name, this.surname, this.phone});
+  Client({this.name, this.surname, this.fechaIngreso, this.fechaNacimiento, this.salario, this.direccion});
 }
